@@ -1,0 +1,23 @@
+# 项目展示数据 —— 在此添加你的成熟项目。
+# 字段：
+#   name : 项目名称（必填）
+#   desc : 一句话描述用途 / 亮点（必填）
+#   link : 项目链接，如 GitHub 仓库地址（可选）
+#   tags : 技术标签数组（可选）
+#
+# 替换下面的示例为你的真实项目即可。
+
+- name: 示例项目 A
+  desc: 用一句话描述这个项目的用途与亮点，便于访客快速理解它解决了什么问题。
+  link: https://github.com/prefee
+  tags: [Python, CLI]
+
+- name: 示例项目 B
+  desc: 另一个成熟项目的简介，突出它的核心功能与适用场景。
+  link: https://github.com/prefee
+  tags: [Web, TypeScript]
+
+- name: 示例项目 C
+  desc: 第三个项目占位，替换为你的真实项目信息。
+  link: https://github.com/prefee
+  tags: [Tool]
