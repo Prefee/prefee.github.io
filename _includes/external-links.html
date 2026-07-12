@@ -1,0 +1,31 @@
+<!-- External links open in a new tab; internal links stay in-page -->
+
+<script>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var host = location.hostname;
+
+    Array.prototype.forEach.call(document.links, function (a) {
+      var href = a.getAttribute('href');
+      if (!href) return;
+
+      // 仅处理 http(s) 绝对链接（相对链接、锚点、mailto 等不动）
+      if (!/^https?:\/\//i.test(href)) return;
+
+      // 站内链接（同 hostname）保持本页跳转
+      if (!a.hostname || a.hostname === host) return;
+
+      // 已显式设置 target 的（footer / sidebar 等硬编码处）保留原行为
+      if (!a.target || a.target === '_self') {
+        a.target = '_blank';
+      }
+
+      // 补全 rel，防止 reverse tabnabbing（合并去重）
+      var rel = (a.getAttribute('rel') || '').trim().split(/\s+/).filter(Boolean);
+      if (rel.indexOf('noopener') === -1) rel.push('noopener');
+      if (rel.indexOf('noreferrer') === -1) rel.push('noreferrer');
+      a.setAttribute('rel', rel.join(' '));
+    });
+  });
+})();
+</script>

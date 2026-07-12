@@ -56,8 +56,8 @@
     </div>
 
     <button type="button" id="lang-switch" aria-label="Switch language">
-      <span class="lang-label" data-lang="zh">中</span>
       <span class="lang-label" data-lang="en">EN</span>
+      <span class="lang-label" data-lang="zh">中</span>
       <span class="lang-knob"></span>
     </button>
 
@@ -108,9 +108,12 @@
     updateBtn();
   }
 
+  // 立即（同步）应用初始状态：本脚本位于按钮之后、同步执行，
+  // 在浏览器首次绘制前就把按钮 class 与导航文字设好，避免切页时闪跳。
+  apply(cur);
+  updateBtn();
+
   document.addEventListener('DOMContentLoaded', function () {
-    apply(cur);
-    updateBtn();
     var btn = document.getElementById('lang-switch');
     if (btn) btn.addEventListener('click', function () {
       set(cur === 'en' ? 'zh' : 'en');
